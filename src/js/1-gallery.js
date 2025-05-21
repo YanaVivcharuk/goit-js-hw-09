@@ -1,6 +1,3 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 const images = [
   {
     preview:
@@ -67,40 +64,31 @@ const images = [
   },
 ];
 
-const gallaryEl = document.querySelector('ul.gallery');
-console.log(gallaryEl);
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-function imageTamplate(image) {
-  return `<li class="gallery-item">
-  <a class="gallery-link" href="${image.original}">
-  <img
-  class="gallery-image"
-  src="${image.preview}"
-  alt="${image.description}"
-  />
-  </a>
-  </li> `;
+const gallery = document.querySelector('.gallery');
+
+function createGalleryMarkup(images) {
+  return images
+    .map(
+      ({ preview, original, description }) => `
+      <li class="gallery-item">
+        <a class="gallery-link" href="${original}">
+          <img 
+            class="gallery-image" 
+            src="${preview}" 
+            alt="${description}" 
+          />
+        </a>
+      </li>`
+    )
+    .join('');
 }
 
-function imagesTamplate(images) {
-  const markup = imagesTamplate(images);
-  gallaryEl.innerHTML = markup;
-}
+gallery.innerHTML = createGalleryMarkup(images);
 
-function initGallery() {
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionsDate: 'alt',
-    captionDelay: 250,
-    fadeSpeed: 400,
-    closeText: '×',
-    navText: ['&lsaquo;', '&rsaquo;'],
-    loop: true,
-    alertError: true,
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderImages(images);
-  initGallery();
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
 });

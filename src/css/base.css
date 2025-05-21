@@ -30,3 +30,36 @@ main {
 main:has(.back-link) {
   text-align: center;
 }
+.galerry-list {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid #1b556c;
+  color: #090d0e;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.galerry-list:hover {
+  background-color: #1b556c;
+  color: white;
+}
+.form-list {
+  display: inline-block;
+  padding: 11px 34px;
+  border: 2px solid #1b556c;
+  color: #090d0e;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin: 10px;
+}
+
+.form-list:hover {
+  background-color: #1b556c;
+  color: white;
+}
