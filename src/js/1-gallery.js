@@ -1,3 +1,5 @@
+console.log('Gallery');
+
 const images = [
   {
     preview:
